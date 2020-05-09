@@ -1,3 +1,11 @@
-const app = async () => '#BuildforSDG';
+import React from 'react';
 
-export default app;
+const App = () => {
+  return (
+    <div>
+      <p> React boilerplate entry </p>{' '}
+    </div>
+  );
+};
+
+export default App;

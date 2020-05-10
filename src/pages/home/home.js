@@ -2,15 +2,17 @@ import React from 'react';
 
 import { Footer, Banner } from '../../components/';
 import { Text, Body } from '../../styles/';
+import { Mobile, WasteStatistics, Steps } from './features/';
 
 const Home = () => {
   return (
     <div>
       <Banner />
 
-      <Body>
-        <Text> Home Component </Text>
-      </Body>
+      <WasteStatistics />
+
+      <Mobile />
+      <Steps />
 
       <Footer />
     </div>

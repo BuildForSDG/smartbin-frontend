@@ -8,7 +8,7 @@ import { Text, FooterBody, Flex, Hover } from '../styles';
 const Footer = () => {
   const Testing = styled.div`
     textAlign: "center",
-    background: "#0e2f5a",
+    background: "#C64F0C",
     padding: "1em",
     color: "#fff",
   `;
@@ -36,12 +36,12 @@ const Footer = () => {
       <FooterBody>
         {Width >= 800 ? (
           <div style={{ padding: '2%' }}>
-            <Flex justifyAround>
+            <Flex justifyContent="space-between">
               <div>
                 <br />
                 <h3 style={{ color: '#fff', textAlign: 'center' }}>Oasis </h3>
 
-                <Flex justifyAround>
+                <Flex justifyContent="space-even">
                   <Hover padded>
                     <FiFacebook style={{ color: 'black', fontSize: '2rem' }} />
                   </Hover>
@@ -55,13 +55,13 @@ const Footer = () => {
                   </Hover>
                 </Flex>
               </div>
-              <Flex>
+              <Flex column>
                 <Text> PRODUCT </Text>
                 <FooterLink text={' Create Team'} />
                 <FooterLink text={'Documentation'} />
                 <FooterLink text={'Biling'} />
               </Flex>
-              <Flex>
+              <Flex column>
                 <Text> HELP </Text>
                 <FooterLink text={'Integrations'} />
                 <FooterLink text={'Contact Support'} />
@@ -69,7 +69,7 @@ const Footer = () => {
                 <FooterLink text={'About Us'} />
               </Flex>
 
-              <Flex>
+              <Flex column>
                 <Text> MORE </Text>
                 <FooterLink text={'Social'} />
                 <FooterLink text={'Careers'} />
@@ -135,8 +135,9 @@ const Footer = () => {
 
         <Testing
           style={{
-            backgroundColor: ' #361f94',
+            backgroundColor: ' #C64F0C',
             fontSize: '0.9rem',
+            textAlign: 'center',
           }}
         >
           <p>

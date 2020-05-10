@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { Body, Text } from '../../../styles/';
+
 const Mobile = () => {
   return (
-    <div>
-      <p> Mobile Component </p>
-    </div>
+    <Body>
+      <Text> For Everyone with a mobile device </Text>
+    </Body>
   );
 };
 

@@ -36,8 +36,13 @@
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/preset-react": "^7.9.4",
+    "@svgr/webpack": "^5.4.0",
+    "file-loader": "^6.0.0",
     "react-hot-loader": "^4.12.21",
+    "react-icons": "^3.10.0",
+    "react-router-dom": "^5.1.2",
     "styled-components": "^5.1.0",
+    "styled-media-query": "^2.1.2",
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {

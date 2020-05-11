@@ -6,14 +6,14 @@ import useWindowWidth from '../styles/hooks_resize';
 import { Text, FooterBody, Flex, Hover } from '../styles';
 
 const Footer = () => {
+  const Width = useWindowWidth();
+
   const Testing = styled.div`
     textAlign: "center",
     background: "#C64F0C",
     padding: "1em",
     color: "#fff",
   `;
-
-  const Width = useWindowWidth();
 
   const FooterLink = (props) => {
     return (

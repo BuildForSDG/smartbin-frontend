@@ -1,14 +1,36 @@
-import React from 'react';
+import * as React from 'react';
 import Header from './header';
-import Illustration from '../assets/svg/illustration.svg';
 import { Text, Flex, BigTitle, LgButton, BannerBody } from '../styles/';
 import useWindowWidth from '../styles/hooks_resize';
-import GrassIllustration, {
-  ReactComponent as Grass,
-} from '../assets/svg/grass.svg';
 
 const Banner = () => {
-  const Width = useWindowWidth();
+  // const Width = useWindowWidth();
+  const Width = 850;
+
+  // const words = ['Transport', 'Reduce', 'Distribute'];
+  // const [Index, setIndex] = React.useState(0);
+  // const [Text, setText] = React.useState('');
+
+  // setTimeout(() => {
+  //   setIndex(Index + 1);
+  // }, 1000);
+
+  // React.useEffect(() => {
+  //   const name = 'me';
+
+  //   //   const index = 0;
+  //   //   const interval = 3000;
+  //   //   const deleting = false;
+  //   //   const currentWord = index % words.length;
+  //   //   let word = words[currentWord];
+  //   //   let text = '';
+
+  //   // setText(word.substring(0, text + 1));
+
+  //   setText('rand');
+
+  //   return name;
+  // }, []);
 
   return (
     <div>
@@ -19,18 +41,27 @@ const Banner = () => {
         {Width >= 1050 ? (
           <div>
             <Flex justifyContent={'space-between'}>
-              <img src={Illustration} alt="illustration here" />
+              <img src={'/illustration.svg'} alt="illustration here" />
 
               <Flex column>
                 <br />
                 <br />
                 <br />
                 <br />
-                <BigTitle
-                  style={{ textAlign: 'center', margin: '1rem  0.2em' }}
-                >
-                  Clean , Decongest and Reduce waste in Africa
-                </BigTitle>
+                <Flex>
+                  <BigTitle
+                    style={{ textAlign: 'center', margin: '1rem  0.1em' }}
+                  >
+                    {words[Index]}
+                  </BigTitle>
+
+                  <BigTitle
+                    style={{ textAlign: 'center', margin: '1rem  0.1em' }}
+                  >
+                    Waste Products in Africa.
+                  </BigTitle>
+                </Flex>
+
                 <Text style={{ textAlign: 'center' }} items>
                   Moving Waste Products Acrosss Afria
                 </Text>
@@ -57,7 +88,11 @@ const Banner = () => {
           </Flex>
         )}
       </BannerBody>
-      <img alt="Grasses" src={GrassIllustration} style={{ height: 'auto' }} />
+      <img
+        alt="Grasses"
+        src={'/grass.svg'}
+        style={{ height: 'auto', width: '100%' }}
+      />
     </div>
   );
 };

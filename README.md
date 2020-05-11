@@ -1,68 +1,234 @@
-barebones setup for JavaScript / Node projects replace this with a one-liner phrase describing this project or app
+This project was bootstrapped with [Create Next App](https://github.com/segmentio/create-next-app).
 
-[![Codacy Badge](https://img.shields.io/badge/Code%20Quality-D-red)](https://img.shields.io/badge/Code%20Quality-D-red)
+Find the most recent version of this guide at [here](https://github.com/segmentio/create-next-app/blob/master/lib/templates/default/README.md). And check out [Next.js repo](https://github.com/zeit/next.js) for the most up-to-date info.
 
+## Table of Contents
 
-## About
+- [Questions? Feedback?](#questions-feedback)
+- [Folder Structure](#folder-structure)
+- [Available Scripts](#available-scripts)
+  - [npm run dev](#npm-run-dev)
+  - [npm run build](#npm-run-build)
+  - [npm run start](#npm-run-start)
+- [Using CSS](#using-css)
+- [Adding Components](#adding-components)
+- [Fetching Data](#fetching-data)
+- [Custom Server](#custom-server)
+- [Syntax Highlighting](#syntax-highlighting)
+- [Using the `static` Folder](#using-the-static-folder)
+- [Deploy to Now](#deploy-to-now)
+- [Something Missing?](#something-missing)
 
-What is this project about. Ok to enrich here or the section above it with an image. 
+## Questions? Feedback?
 
-Once this repo has been setup on Codacy by the TTL, replace the above badge with the actual one from the Codacy dashboard, and add the code coverage badge as well. This is mandatory
+Check out [Next.js FAQ & docs](https://github.com/zeit/next.js#faq) or [let us know](https://github.com/segmentio/create-next-app/issues) your feedback.
 
-This is a simple JavaScript starter repo template for setting up your project. The setup contains
+## Folder Structure
 
-- Jest: For runnung tests. We strongly recommend that JavaScript projects use Jest
+After creating an app, it should look something like:
 
-- Eslint & Prettier: For formatting code to match ESlint AirBnB coding standard. You might need to install the ESlint and Prettier plugins for your code editor to make the most of these utilities
+```
+.
+├── README.md
+├── components
+│   ├── head.js
+│   └── nav.js
+├── next.config.js
+├── node_modules
+│   ├── [...]
+├── package.json
+├── pages
+│   └── index.js
+├── static
+│   └── favicon.ico
+└── yarn.lock
+```
 
-## Why
+Routing in Next.js is based on the file system, so `./pages/index.js` maps to the `/` route and
+`./pages/about.js` would map to `/about`.
 
-Talk about what problem this solves, what SDG(s) and SGD targets it addresses and why these are imoirtant
+The `./static` directory maps to `/static` in the `next` server, so you can put all your
+other static resources like images or compiled CSS in there.
 
-## Usage
- How would someone use what you have built, include URLs to the deployed app, service e.t.c when you have it setup
+Out of the box, we get:
 
+- Automatic transpilation and bundling (with webpack and babel)
+- Hot code reloading
+- Server rendering and indexing of `./pages`
+- Static file serving. `./static/` is mapped to `/static/`
 
-## Setup
+Read more about [Next's Routing](https://github.com/zeit/next.js#routing)
 
-Install `npm` or `yarn` if you dont have any of them already installed. We recommend Yarn though.
+## Available Scripts
 
-After clonning the repo to your local machine and moving into the cloned folder, Run `yarn install` to get started by installing dependencies. 
+In the project directory, you can run:
 
-`src/index.js` is the entry to the project and source code should go into the `src` folder.
+### `npm run dev`
 
-All tests should be written in the `__tests__' folder. There's a sample in there.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bundler. It is much simpler that WebPack and the others
+The page will reload if you make edits.<br>
+You will also see any errors in the console.
 
-#### Hints
+### `npm run build`
 
-- Run `npm install` or `yarn install` to get started. We'll assume you are using Yarn.
-- Install additional dependencies: `yarn add <dependency-name> [-D]`
-- Run tests: `yarn test`
-- Run tests with test coverage info: `yarn test:cover`
-- Check the codebase for proper syntax and formatting compliance: `yarn lint`
-- Run your app in local dev mode: `yarn start`. This puts the bundled app in a `dist` folder, set up a local web server at localhost:1234, and continues to watch for your code changes which it syncs with the local server. This means if you loaded the app in a browser, it will auto-refresh as you code along. Feel free to use whatever bundler best meets your needs. Parcel was only added as a sample and for those looking for a simple but effective solution to the hassle of bundlers. 
+Builds the app for production to the `.next` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Authors
+### `npm run start`
 
-List the team behind this project. Their names linked to their Github, LinkedIn, or Twitter accounts should siffice. Ok to signify the role they play in the project, including the TTL and mentor
+Starts the application in production mode.
+The application should be compiled with \`next build\` first.
 
-## Contributing
-If this project sounds interesting to you and you'd like to contribute, thank you!
-First, you can send a mail to buildforsdg@andela.com to indicate your interest, why you'd like to support and what forms of support you can bring to the table, but here are areas we think we'd need the most help in this project :
-1.  area one (e.g this app is about human trafficking and you need feedback on your roadmap and feature list from the private sector / NGOs)
-2.  area two (e.g you want people to opt-in and try using your staging app at staging.project-name.com and report any bugs via a form)
-3.  area three (e.g here is the zoom link to our end-of sprint webinar, join and provide feedback as a stakeholder if you can)
+See the section in Next docs about [deployment](https://github.com/zeit/next.js/wiki/Deployment) for more information.
 
-## Acknowledgements
+## Using CSS
 
-Did you use someone else’s code?
-Do you want to thank someone explicitly?
-Did someone’s blog post spark off a wonderful idea or give you a solution to nagging problem?
+[`styled-jsx`](https://github.com/zeit/styled-jsx) is bundled with next to provide support for isolated scoped CSS. The aim is to support "shadow CSS" resembling of Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).
 
-It's powerful to always give credit.
+```jsx
+export default () => (
+  <div>
+    Hello world
+    <p>scoped!</p>
+    <style jsx>{`
+      p {
+        color: blue;
+      }
+      div {
+        background: red;
+      }
+      @media (max-width: 600px) {
+        div {
+          background: blue;
+        }
+      }
+    `}</style>
+  </div>
+)
+```
 
-## LICENSE
-MIT
+Read more about [Next's CSS features](https://github.com/zeit/next.js#css).
 
+## Adding Components
+
+We recommend keeping React components in `./components` and they should look like:
+
+### `./components/simple.js`
+
+```jsx
+const Simple = () => <div>Simple Component</div>
+
+export default Simple // don't forget to export default!
+```
+
+### `./components/complex.js`
+
+```jsx
+import { Component } from 'react'
+
+class Complex extends Component {
+  state = {
+    text: 'World'
+  }
+
+  render() {
+    const { text } = this.state
+    return <div>Hello {text}</div>
+  }
+}
+
+export default Complex // don't forget to export default!
+```
+
+## Fetching Data
+
+You can fetch data in `pages` components using `getInitialProps` like this:
+
+### `./pages/stars.js`
+
+```jsx
+const Page = props => <div>Next stars: {props.stars}</div>
+
+Page.getInitialProps = async ({ req }) => {
+  const res = await fetch('https://api.github.com/repos/zeit/next.js')
+  const json = await res.json()
+  const stars = json.stargazers_count
+  return { stars }
+}
+
+export default Page
+```
+
+For the initial page load, `getInitialProps` will execute on the server only. `getInitialProps` will only be executed on the client when navigating to a different route via the `Link` component or using the routing APIs.
+
+_Note: `getInitialProps` can **not** be used in children components. Only in `pages`._
+
+Read more about [fetching data and the component lifecycle](https://github.com/zeit/next.js#fetching-data-and-component-lifecycle)
+
+## Custom Server
+
+Want to start a new app with a custom server? Run `create-next-app --example customer-server custom-app`
+
+Typically you start your next server with `next start`. It's possible, however, to start a server 100% programmatically in order to customize routes, use route patterns, etc
+
+This example makes `/a` resolve to `./pages/b`, and `/b` resolve to `./pages/a`:
+
+```jsx
+const { createServer } = require('http')
+const { parse } = require('url')
+const next = require('next')
+
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
+
+app.prepare().then(() => {
+  createServer((req, res) => {
+    // Be sure to pass `true` as the second argument to `url.parse`.
+    // This tells it to parse the query portion of the URL.
+    const parsedUrl = parse(req.url, true)
+    const { pathname, query } = parsedUrl
+
+    if (pathname === '/a') {
+      app.render(req, res, '/b', query)
+    } else if (pathname === '/b') {
+      app.render(req, res, '/a', query)
+    } else {
+      handle(req, res, parsedUrl)
+    }
+  }).listen(3000, err => {
+    if (err) throw err
+    console.log('> Ready on http://localhost:3000')
+  })
+})
+```
+
+Then, change your `start` script to `NODE_ENV=production node server.js`.
+
+Read more about [custom server and routing](https://github.com/zeit/next.js#custom-server-and-routing)
+
+## Syntax Highlighting
+
+To configure the syntax highlighting in your favorite text editor, head to the [relevant Babel documentation page](https://babeljs.io/docs/editors) and follow the instructions. Some of the most popular editors are covered.
+
+## Deploy to Now
+
+[now](https://zeit.co/now) offers a zero-configuration single-command deployment.
+
+1.  Install the `now` command-line tool either via the recommended [desktop tool](https://zeit.co/download) or via node with `npm install -g now`.
+
+2.  Run `now` from your project directory. You will see a **now.sh** URL in your output like this:
+
+    ```
+    > Ready! https://your-project-dirname-tpspyhtdtk.now.sh (copied to clipboard)
+    ```
+
+    Paste that URL into your browser when the build is complete, and you will see your deployed app.
+
+You can find more details about [`now` here](https://zeit.co/now).
+
+## Something Missing?
+
+If you have ideas for how we could improve this readme or the project in general, [let us know](https://github.com/segmentio/create-next-app/issues) or [contribute some!](https://github.com/segmentio/create-next-app/edit/master/lib/templates/default/README.md)

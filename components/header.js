@@ -5,7 +5,8 @@ import useWindowWidth from '../styles/hooks_resize';
 import { HeaderBody, Text, Hover, Flex, Button } from '../styles/';
 
 const Header = (props) => {
-  const Width = useWindowWidth();
+  // const Width = useWindowWidth();
+  const Width = 750;
 
   const Icons = (props) => {
     return (

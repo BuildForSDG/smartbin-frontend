@@ -3,17 +3,18 @@ import styled from 'styled-components';
 import { FiGithub, FiTwitter, FiFacebook } from 'react-icons/fi';
 
 import useWindowWidth from '../styles/hooks_resize';
-import { Text, FooterBody, Flex, Hover } from '../styles';
+import { Text, FooterBody, Flex, Hover, Title, Button } from '../styles';
+
+const Testing = styled.div`
+  textAlign: center;
+  background: #c4c4c4;
+  padding: 1em;
+  color: #000;
+`;
 
 const Footer = () => {
   const Width = useWindowWidth();
-
-  const Testing = styled.div`
-    textAlign: "center",
-    background: "#C64F0C",
-    padding: "1em",
-    color: "#fff",
-  `;
+  console.log(Width, 'width');
 
   const FooterLink = (props) => {
     return (
@@ -26,10 +27,11 @@ const Footer = () => {
   return (
     <div>
       <Testing>
-        <Flex justifyCenter>
-          <Text small white>
-            Oasis is coming soon. Get early acess
-          </Text>
+        <Flex justifyContent="center">
+          <Title style={{ fontWeight: 'lighter' }}>
+            Got a full trash bin ?{' '}
+          </Title>
+          <Button> Dial *121# </Button>
         </Flex>
       </Testing>
 
@@ -39,7 +41,10 @@ const Footer = () => {
             <Flex justifyContent="space-between">
               <div>
                 <br />
-                <h3 style={{ color: '#fff', textAlign: 'center' }}>Oasis </h3>
+                <h3 style={{ color: '#fff', textAlign: 'center' }}>
+                  {' '}
+                  CleanUp Africa
+                </h3>
 
                 <Flex justifyContent="space-even">
                   <Hover padded>
@@ -79,7 +84,7 @@ const Footer = () => {
           </div>
         ) : (
           <div style={{ padding: '0.5%' }}>
-            <Flex justifyCenter>
+            <Flex justifyContent="center">
               <div>
                 <h4
                   style={{
@@ -88,10 +93,10 @@ const Footer = () => {
                     color: '#fff',
                   }}
                 >
-                  Oasis
+                  CleanUp Africa
                 </h4>
 
-                <Flex justifyAround>
+                <Flex justifyContent="space-around">
                   <Hover padded>
                     <FiFacebook style={{ color: 'black', fontSize: '1.8em' }} />
                   </Hover>
@@ -106,8 +111,8 @@ const Footer = () => {
             </Flex>
 
             <br />
-            <Flex justifyAround>
-              <Flex>
+            <Flex justifyContent="space-around">
+              <Flex column="column">
                 <Text> PRODUCT </Text>
                 <Hover marginRight>
                   <FooterLink text={' Create Team'} />
@@ -115,7 +120,8 @@ const Footer = () => {
                 <FooterLink text={'Documentation'} />
                 <FooterLink text={'Biling'} />
               </Flex>
-              <Flex>
+
+              <Flex column="column">
                 <Text> HELP </Text>
                 <FooterLink text={'Integrations'} />
                 <FooterLink text={'Contact Support'} />
@@ -123,7 +129,7 @@ const Footer = () => {
                 <FooterLink text={'About Us'} />
               </Flex>
 
-              <Flex>
+              <Flex column="column">
                 <Text> MORE </Text>
                 <FooterLink text={'Social'} />
                 <FooterLink text={'Careers'} />

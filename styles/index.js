@@ -24,22 +24,22 @@ padding: 0.5rem 0.5rem;
 `;
 
 const BannerBody = styled.div`
-  padding: 5rem 10rem;
+  padding: 2rem 1rem 0rem 10rem;
   background: transparent;
   ${media.lessThan('huge')`
 padding: 5rem 5rem;
   background : transparent;
  `};
   ${media.lessThan('large')`
-padding: 5rem 3rem;
+padding: 2rem 3rem;
   background : transparent;
  `};
-  ${media.lessThan('medium')`
-padding: 5rem 1rem;
+  ${media.lessThan('medium')`vv
+padding: 1.5rem 1rem;
   background : transparent;
  `};
   ${media.lessThan('small')`
-padding: 5rem 0.5rem;
+padding: 2rem 0.5rem;
   background : transparent;
  `};
 `;
@@ -52,7 +52,25 @@ const Flex = styled.div`
 
 const Hover = styled.div``;
 
-const Body = styled.div`padding: 1rem;`;
+const Body = styled.div`
+  padding: 1rem 5rem;
+  ${media.lessThan('huge')`
+padding:1rem 3rem;
+  background : transparent;
+ `};
+  ${media.lessThan('large')`
+padding:1rem 2rem;
+  background : transparent;
+ `};
+  ${media.lessThan('medium')`
+padding:1rem 1rem;
+  background : transparent;
+ `};
+  ${media.lessThan('small')`
+padding:1rem 0.5rem;
+  background : transparent;
+ `};
+`;
 
 const Button = styled.button`
   padding: 0.5rem 2rem;
@@ -84,6 +102,7 @@ const BigTitle = styled.h1`
 const Card = styled.div`
   padding: 2rem 1rem;
   width: 25rem;
+  background: transparent;
   box-shadow: 0px 5px 7px grey;
   border-radius: 7px;
 `;
@@ -92,9 +111,26 @@ const Title = styled.h2`
   text-align: ${(props) => (props.center ? 'center' : null)};
 `;
 
+const Grid = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 50% 50%;
+  ${media.lessThan('medium')`
+    display : flex;
+    flex-direction : column;
+    text-align  : center;
+ `};
+  ${media.lessThan('small')`
+     display : flex;
+    flex-direction : column;
+    text-align  : center;
+ `};
+`;
+
 export {
   Title,
   Card,
+  Grid,
   Body,
   BannerBody,
   Text,

@@ -5,60 +5,59 @@ import useWindowWidth from '../styles/hooks_resize';
 
 const Banner = () => {
   // const Width = useWindowWidth();
-  const Width = 850;
+  const Width = useWindowWidth();
 
-  // const words = ['Transport', 'Reduce', 'Distribute'];
+  const words = ['Transport', 'Reduce', 'Distribute'];
   // const [Index, setIndex] = React.useState(0);
-  // const [Text, setText] = React.useState('');
+  const [AnimatedText, setText] = React.useState('');
+  const [Deleting, setDeleting] = React.useState(false);
 
   // setTimeout(() => {
   //   setIndex(Index + 1);
   // }, 1000);
 
-  // React.useEffect(() => {
-  //   const name = 'me';
+  const writer = () => {
+    const index = 0;
+    const currentWord = index % words.length;
+    const word = words[currentWord];
 
-  //   //   const index = 0;
-  //   //   const interval = 3000;
-  //   //   const deleting = false;
-  //   //   const currentWord = index % words.length;
-  //   //   let word = words[currentWord];
-  //   //   let text = '';
+    // alert(word);
+    if (Deleting) {
+      setText(word.substring(0, AnimatedText - 1));
+    } else {
+      // setText(word.substring(0, AnimatedText + 1));
+      console.log(word.substring(0, AnimatedText + 1));
+    }
+  };
 
-  //   // setText(word.substring(0, text + 1));
+  setTimeout(() => {
+    writer();
+  }, 1000);
 
-  //   setText('rand');
-
-  //   return name;
-  // }, []);
-
+  console.log(AnimatedText);
   return (
     <div>
       <Header style={true} />
       <BannerBody>
-        <br />
-
         {Width >= 1050 ? (
           <div>
             <Flex justifyContent={'space-between'}>
-              <img src={'/illustration.svg'} alt="illustration here" />
+              <Flex justifyContent={'center'}>
+                <img src={'/illustration.svg'} alt="illustration here" />
+              </Flex>
 
               <Flex column>
-                <br />
-                <br />
                 <br />
                 <br />
                 <Flex>
                   <BigTitle
                     style={{ textAlign: 'center', margin: '1rem  0.1em' }}
-                  >
-                    {words[Index]}
-                  </BigTitle>
+                  />
 
                   <BigTitle
                     style={{ textAlign: 'center', margin: '1rem  0.1em' }}
                   >
-                    Waste Products in Africa.
+                    {AnimatedText} Waste Products in Africa.
                   </BigTitle>
                 </Flex>
 
@@ -72,22 +71,29 @@ const Banner = () => {
             </Flex>
           </div>
         ) : (
-          <Flex justifyCenter>
-            <div style={{ padding: '1em' }}>
-              <BigTitle style={{ textAlign: 'center', margin: '1rem  0.2em' }}>
-                Clean , Decongest and Reduce waste in Africa
-              </BigTitle>
+          <Flex justifyContent={'center'} style={{ padding: '0.2em' }} column>
+            <Flex justifyContent={'center'}>
+              <img
+                src={'/illustration.svg'}
+                alt="illustration here"
+                style={{ height: 'auto', maxWidth: '70%' }}
+              />
+            </Flex>
 
-              <Text style={{ textAlign: 'center' }} items>
-                Moving Waste Products Acrosss Afria
-              </Text>
-              <div style={{ textAlign: 'center' }}>
-                <LgButton> Learn How </LgButton>
-              </div>
+            <BigTitle style={{ textAlign: 'center', margin: '1rem  0.2em' }}>
+              Clean , Decongest and Reduce waste in Africa
+            </BigTitle>
+
+            <Text style={{ textAlign: 'center' }} items>
+              Moving Waste Products Acrosss Afria
+            </Text>
+            <div style={{ textAlign: 'center' }}>
+              <LgButton> Learn How </LgButton>
             </div>
           </Flex>
         )}
       </BannerBody>
+
       <img
         alt="Grasses"
         src={'/grass.svg'}

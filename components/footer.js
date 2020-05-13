@@ -1,0 +1,161 @@
+import React from 'react';
+import styled from 'styled-components';
+import { FiGithub, FiTwitter, FiFacebook } from 'react-icons/fi';
+
+import useWindowWidth from '../styles/hooks_resize';
+import { Text, FooterBody, Flex, Hover, Title, Button } from '../styles';
+
+const Testing = styled.div`
+  textAlign: center;
+  background: #c4c4c4;
+  padding: 1em;
+  color: #000;
+`;
+
+const Footer = () => {
+  const Width = useWindowWidth();
+  console.log(Width, 'width');
+
+  const FooterLink = (props) => {
+    return (
+      <Text white small>
+        {props.text}
+      </Text>
+    );
+  };
+
+  return (
+    <div>
+      <Testing>
+        <Flex justifyContent="center">
+          <Title style={{ fontWeight: 'lighter' }}>
+            Got a full trash bin ?{' '}
+          </Title>
+          <Button> Dial *121# </Button>
+        </Flex>
+      </Testing>
+
+      <FooterBody>
+        {Width >= 800 ? (
+          <div style={{ padding: '2%' }}>
+            <Flex justifyContent="space-between">
+              <div>
+                <br />
+                <h3 style={{ color: '#fff', textAlign: 'center' }}>
+                  {' '}
+                  CleanUp Africa
+                </h3>
+
+                <Flex justifyContent="space-even">
+                  <Hover padded>
+                    <FiFacebook style={{ color: 'black', fontSize: '2rem' }} />
+                  </Hover>
+
+                  <Hover padded>
+                    <FiTwitter style={{ color: 'blue', fontSize: '2rem' }} />
+                  </Hover>
+
+                  <Hover padded>
+                    <FiGithub style={{ color: 'black', fontSize: '2rem' }} />
+                  </Hover>
+                </Flex>
+              </div>
+              <Flex column>
+                <Text> PRODUCT </Text>
+                <FooterLink text={' Create Team'} />
+                <FooterLink text={'Documentation'} />
+                <FooterLink text={'Biling'} />
+              </Flex>
+              <Flex column>
+                <Text> HELP </Text>
+                <FooterLink text={'Integrations'} />
+                <FooterLink text={'Contact Support'} />
+                <FooterLink text={'Guides'} />
+                <FooterLink text={'About Us'} />
+              </Flex>
+
+              <Flex column>
+                <Text> MORE </Text>
+                <FooterLink text={'Social'} />
+                <FooterLink text={'Careers'} />
+                <FooterLink text={'Legal Terms'} />
+              </Flex>
+            </Flex>
+          </div>
+        ) : (
+          <div style={{ padding: '0.5%' }}>
+            <Flex justifyContent="center">
+              <div>
+                <h4
+                  style={{
+                    textAlign: 'center',
+                    marginTop: '1em',
+                    color: '#fff',
+                  }}
+                >
+                  CleanUp Africa
+                </h4>
+
+                <Flex justifyContent="space-around">
+                  <Hover padded>
+                    <FiFacebook style={{ color: 'black', fontSize: '1.8em' }} />
+                  </Hover>
+                  <Hover padded>
+                    <FiTwitter style={{ color: 'blue', fontSize: '1.8em' }} />
+                  </Hover>
+                  <Hover padded>
+                    <FiGithub style={{ color: 'black', fontSize: '1.8em' }} />
+                  </Hover>
+                </Flex>
+              </div>
+            </Flex>
+
+            <br />
+            <Flex justifyContent="space-around">
+              <Flex column="column">
+                <Text> PRODUCT </Text>
+                <Hover marginRight>
+                  <FooterLink text={' Create Team'} />
+                </Hover>
+                <FooterLink text={'Documentation'} />
+                <FooterLink text={'Biling'} />
+              </Flex>
+
+              <Flex column="column">
+                <Text> HELP </Text>
+                <FooterLink text={'Integrations'} />
+                <FooterLink text={'Contact Support'} />
+                <FooterLink text={'Guides'} />
+                <FooterLink text={'About Us'} />
+              </Flex>
+
+              <Flex column="column">
+                <Text> MORE </Text>
+                <FooterLink text={'Social'} />
+                <FooterLink text={'Careers'} />
+                <FooterLink text={'Legal Terms'} />
+              </Flex>
+            </Flex>
+          </div>
+        )}
+
+        <Testing
+          style={{
+            backgroundColor: ' #C64F0C',
+            fontSize: '0.9rem',
+            textAlign: 'center',
+          }}
+        >
+          <p>
+            Copyright © {new Date().getFullYear()} , a subsidiary of the
+            <a href="https://www.fundry.netlify.com"> Fundry Program </a>.
+            <br /> <a href="/"> Terms of Service </a> or
+            <a href="/"> Privacy Policies </a>
+          </p>
+        </Testing>
+      </FooterBody>
+    </div>
+  );
+};
+
+export default Footer;
